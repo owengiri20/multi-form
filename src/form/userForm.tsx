@@ -3,9 +3,7 @@ import { useStyletron } from "baseui"
 import { ProgressBar } from "baseui/progress-bar"
 import { Button } from "baseui/button"
 
-interface Props {}
-export const UserForm = (props: Props) => {
-	const {} = props
+export const UserForm = () => {
 	const [css, theme] = useStyletron()
 
 	const containerStyle: string = css({
@@ -29,16 +27,22 @@ export const UserForm = (props: Props) => {
 		marginRight: "2px",
 	})
 
-	const [value, setValue] = React.useState(100)
+	const [step1, setStep1] = React.useState(0)
+	const [step2, setStep2] = React.useState(0)
+	const [step3, setStep3] = React.useState(0)
+	const [step4, setStep4] = React.useState(0)
+	const [step5, setStep5] = React.useState(0)
+	const [step6, setStep6] = React.useState(0)
+
 	return (
 		<div className={containerStyle}>
 			<div className={topContainer}>
-				<Bar />
-				<Bar />
-				<Bar />
-				<Bar />
-				<Bar />
-				<Bar />
+				<Bar value={step1} setFn={setStep1} />
+				<Bar value={step2} setFn={setStep2} />
+				<Bar value={step3} setFn={setStep3} />
+				<Bar value={step4} setFn={setStep4} />
+				<Bar value={step5} setFn={setStep5} />
+				<Bar value={step6} setFn={setStep6} />
 			</div>
 			<div className={nextPrev}>
 				<div className={buttonContainer}>
@@ -52,7 +56,10 @@ export const UserForm = (props: Props) => {
 	)
 }
 
-interface Props {}
+interface Props {
+	value: number
+	setFn: (value: number) => void
+}
 export const Bar = (props: Props) => {
 	const {} = props
 	const [css, theme] = useStyletron()

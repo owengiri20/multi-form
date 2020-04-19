@@ -4,11 +4,7 @@ import "./App.css"
 import { UserForm } from "./form/userForm"
 
 function App() {
-	return (
-		<div className="App">
-			<UserForm />
-		</div>
-	)
+	return <div className="App">{/* <UserForm /> */}</div>
 }
 
 export default App
