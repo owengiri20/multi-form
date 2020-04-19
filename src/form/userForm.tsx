@@ -1,6 +1,7 @@
 import * as React from "react"
 import { useStyletron } from "baseui"
 import { ProgressBar } from "baseui/progress-bar"
+import { Button } from "baseui/button"
 
 interface Props {}
 export const UserForm = (props: Props) => {
@@ -12,16 +13,20 @@ export const UserForm = (props: Props) => {
 		width: "100%",
 		display: "flex",
 		alignItems: "center",
+		flexDirection: "column",
 	})
 	const topContainer: string = css({
 		display: "flex",
 		width: "100%",
 	})
-	const top: string = css({
+
+	const nextPrev: string = css({
 		display: "flex",
 	})
-	const bottom: string = css({
-		display: "flex",
+
+	const buttonContainer: string = css({
+		marginLeft: "2px",
+		marginRight: "2px",
 	})
 
 	const [value, setValue] = React.useState(100)
@@ -34,6 +39,14 @@ export const UserForm = (props: Props) => {
 				<Bar />
 				<Bar />
 				<Bar />
+			</div>
+			<div className={nextPrev}>
+				<div className={buttonContainer}>
+					<Button onClick={() => console.log("Back")}>Back</Button>
+				</div>
+				<div className={buttonContainer}>
+					<Button onClick={() => console.log("Next")}>Next</Button>
+				</div>
 			</div>
 		</div>
 	)
@@ -59,7 +72,6 @@ export const Bar = (props: Props) => {
 	})
 	const [value, setValue] = React.useState(1)
 
-	const play = () => {}
 	return (
 		<div className={barContainer}>
 			<div>Label1</div>
