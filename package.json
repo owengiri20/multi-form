@@ -10,9 +10,15 @@
     "@types/node": "^12.12.36",
     "@types/react": "^16.9.34",
     "@types/react-dom": "^16.9.6",
+    "@types/styletron-engine-atomic": "^1.1.0",
+    "@types/styletron-react": "^5.0.2",
+    "@types/styletron-standard": "^2.0.0",
+    "baseui": "^9.71.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
+    "styletron-engine-atomic": "^1.4.6",
+    "styletron-react": "^5.2.7",
     "typescript": "^3.7.5"
   },
   "scripts": {
