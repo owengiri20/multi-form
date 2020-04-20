@@ -8,7 +8,7 @@ export const UserForm = () => {
 
 	// STATE
 	const [step, setStep] = React.useState(1)
-	const maxStep = 5
+	const maxStep = 6
 	const [firstname, setFirstname] = React.useState("")
 	const [lastname, setLastname] = React.useState("")
 	const [occupation, setOccupation] = React.useState("")
@@ -68,10 +68,65 @@ export const UserForm = () => {
 			</div>
 			<div className={nextPrev}>
 				<div className={buttonContainer}>
-					<Button onClick={() => prevStep()}>Back</Button>
+					<Button
+						onClick={() => {
+							switch (step) {
+								case 1:
+									setStep1(0)
+									break
+								case 2:
+									setStep2(0)
+									break
+								case 3:
+									setStep3(0)
+									break
+								case 4:
+									setStep4(0)
+									break
+								case 5:
+									setStep5(0)
+									break
+								case 6:
+									setStep6(0)
+									break
+							}
+							prevStep()
+						}}
+					>
+						Back
+					</Button>
 				</div>
 				<div className={buttonContainer}>
-					<Button onClick={() => nextStep()}>Next</Button>
+					<Button
+						onClick={() => {
+							switch (step) {
+								case 1:
+									setStep1(100)
+									break
+								case 2:
+									setStep2(100)
+									break
+								case 3:
+									setStep3(100)
+									break
+								case 4:
+									setStep4(100)
+									break
+								case 5:
+									setStep5(100)
+									break
+								case 6:
+									setStep6(100)
+									break
+							}
+							nextStep()
+						}}
+					>
+						Next
+					</Button>
+				</div>
+				<div>
+					<h1>CURRENT STEP {step}</h1>
 				</div>
 			</div>
 		</div>
@@ -83,7 +138,7 @@ interface Props {
 	setFn: (value: number) => void
 }
 export const Bar = (props: Props) => {
-	const {} = props
+	const { setFn, value } = props
 	const [css, theme] = useStyletron()
 
 	const containerStyle: string = css({
@@ -99,7 +154,6 @@ export const Bar = (props: Props) => {
 		marginLeft: "2px",
 		marginRight: "2px",
 	})
-	const [value, setValue] = React.useState(1)
 
 	return (
 		<div className={barContainer}>
@@ -123,7 +177,7 @@ export const Bar = (props: Props) => {
 			/>
 			<button
 				onClick={() => {
-					setValue(100)
+					setFn(100)
 				}}
 			>
 				run
