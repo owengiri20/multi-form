@@ -53,6 +53,34 @@ export const UserForm = () => {
 	const [step5, setStep5] = React.useState(0)
 	const [step6, setStep6] = React.useState(0)
 
+	const handleClick = (direction: string) => {
+		const amount = direction === "back" ? 0 : 100
+		switch (step) {
+			case 1:
+				setStep1(amount)
+				break
+			case 2:
+				setStep2(amount)
+				break
+			case 3:
+				setStep3(amount)
+				break
+			case 4:
+				setStep4(amount)
+				break
+			case 5:
+				setStep5(amount)
+				break
+			case 6:
+				setStep6(amount)
+				break
+		}
+		if (direction === "back") {
+			prevStep()
+		} else {
+			nextStep()
+		}
+	}
 	return (
 		<div className={containerStyle}>
 			<div className={topContainer}>
@@ -70,27 +98,7 @@ export const UserForm = () => {
 				<div className={buttonContainer}>
 					<Button
 						onClick={() => {
-							switch (step) {
-								case 1:
-									setStep1(0)
-									break
-								case 2:
-									setStep2(0)
-									break
-								case 3:
-									setStep3(0)
-									break
-								case 4:
-									setStep4(0)
-									break
-								case 5:
-									setStep5(0)
-									break
-								case 6:
-									setStep6(0)
-									break
-							}
-							prevStep()
+							handleClick("back")
 						}}
 					>
 						Back
@@ -99,27 +107,7 @@ export const UserForm = () => {
 				<div className={buttonContainer}>
 					<Button
 						onClick={() => {
-							switch (step) {
-								case 1:
-									setStep1(100)
-									break
-								case 2:
-									setStep2(100)
-									break
-								case 3:
-									setStep3(100)
-									break
-								case 4:
-									setStep4(100)
-									break
-								case 5:
-									setStep5(100)
-									break
-								case 6:
-									setStep6(100)
-									break
-							}
-							nextStep()
+							handleClick("")
 						}}
 					>
 						Next
