@@ -6,6 +6,25 @@ import { Button } from "baseui/button"
 export const UserForm = () => {
 	const [css, theme] = useStyletron()
 
+	// STATE
+	const [step, setStep] = React.useState(1)
+	const maxStep = 5
+	const [firstname, setFirstname] = React.useState("")
+	const [lastname, setLastname] = React.useState("")
+	const [occupation, setOccupation] = React.useState("")
+
+	// Proceed to next step
+
+	const nextStep = () => {
+		if (step === maxStep) return
+		setStep(step + 1)
+	}
+
+	const prevStep = () => {
+		if (step == 1) return
+		setStep(step - 1)
+	}
+
 	const containerStyle: string = css({
 		height: "100%",
 		width: "100%",
@@ -44,12 +63,15 @@ export const UserForm = () => {
 				<Bar value={step5} setFn={setStep5} />
 				<Bar value={step6} setFn={setStep6} />
 			</div>
+			<div>
+				<ActualForm currStep={step} nextStepFn={nextStep} prevStepFn={prevStep} />
+			</div>
 			<div className={nextPrev}>
 				<div className={buttonContainer}>
-					<Button onClick={() => console.log("Back")}>Back</Button>
+					<Button onClick={() => prevStep()}>Back</Button>
 				</div>
 				<div className={buttonContainer}>
-					<Button onClick={() => console.log("Next")}>Next</Button>
+					<Button onClick={() => nextStep()}>Next</Button>
 				</div>
 			</div>
 		</div>
@@ -108,4 +130,139 @@ export const Bar = (props: Props) => {
 			</button>
 		</div>
 	)
+}
+
+interface Props2 {
+	currStep: number
+	prevStepFn: () => void
+	nextStepFn: () => void
+}
+
+export const ActualForm = (props: Props2) => {
+	const { currStep, prevStepFn, nextStepFn } = props
+
+	switch (currStep) {
+		case 1:
+			return (
+				<div>
+					step 1
+					<div>
+						<div>
+							<h1>form here</h1>
+							<h2>djfj</h2>
+							<input type="text" name="" id="" />
+						</div>
+						<button
+							onClick={() => {
+								prevStepFn()
+							}}
+						>
+							prev
+						</button>
+						<br />
+						<button
+							onClick={() => {
+								nextStepFn()
+							}}
+						>
+							next
+						</button>
+					</div>
+				</div>
+			)
+		case 2:
+			return (
+				<div>
+					step 2
+					<div>
+						<button
+							onClick={() => {
+								prevStepFn()
+							}}
+						>
+							prev
+						</button>
+						<br />
+						<button
+							onClick={() => {
+								nextStepFn()
+							}}
+						>
+							next
+						</button>
+					</div>
+				</div>
+			)
+		case 3:
+			return (
+				<div>
+					step 3
+					<div>
+						<button
+							onClick={() => {
+								prevStepFn()
+							}}
+						>
+							prev
+						</button>
+						<br />
+						<button
+							onClick={() => {
+								nextStepFn()
+							}}
+						>
+							next
+						</button>
+					</div>
+				</div>
+			)
+		case 4:
+			return (
+				<div>
+					step 4
+					<div>
+						<button
+							onClick={() => {
+								prevStepFn()
+							}}
+						>
+							prev
+						</button>
+						<br />
+						<button
+							onClick={() => {
+								nextStepFn()
+							}}
+						>
+							next
+						</button>
+					</div>
+				</div>
+			)
+		case 5:
+			return (
+				<div>
+					step 5
+					<div>
+						<button
+							onClick={() => {
+								prevStepFn()
+							}}
+						>
+							prev
+						</button>
+						<br />
+						<button
+							onClick={() => {
+								nextStepFn()
+							}}
+						>
+							next
+						</button>
+					</div>
+				</div>
+			)
+		default:
+			return <div>fuck</div>
+	}
 }
